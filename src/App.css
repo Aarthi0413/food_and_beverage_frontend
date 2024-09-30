@@ -1,0 +1,64 @@
+.customShadow{
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+}
+
+.userTable{
+  @apply bg-white pb-4
+}
+
+.userTable th{
+  @apply border text-base
+}
+
+.userTable td{
+  @apply border text-base text-center
+}
+
+.scrollbar-none::-webkit-scrollbar{
+  display: none;
+}
+
+.text-style{
+  font-family: 'Poppins', sans-serif;
+}
+
+.shop-name{
+  font-style: italic;
+  font-family: Lucida;
+}
+
+.login-background{
+  background-image: url("https://d1tgh8fmlzexmh.cloudfront.net/ccbp-responsive-website/foodmunch-banner-bg.png");
+  height: 91vh;
+  background-size: cover;
+}
+
+.signup-background{
+  background-image: url("https://d1tgh8fmlzexmh.cloudfront.net/ccbp-responsive-website/foodmunch-banner-bg.png");
+  height: 91vh;
+  background-size: cover;
+}
+
+.time-slot-container {
+  padding: 0.5rem; 
+}
+
+.time-slot-label {
+  margin-bottom: 0.5rem; 
+  font-weight: bold; 
+}
+
+.time-slot-relative {
+  position: relative; 
+}
+
+.time-slot-dropdown {
+  border: 1px solid #ccc; 
+  border-radius: 4px; 
+  padding: 0.5rem; 
+  width: 100%; 
+  max-width: 250px; 
+  overflow-y: auto; 
+  z-index: 10; 
+}
+
