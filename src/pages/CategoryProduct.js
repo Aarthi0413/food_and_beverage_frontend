@@ -96,7 +96,7 @@ const CategoryProduct = () => {
     <div className="container mx-auto p-4 font-serif">
       {/*desktop view */}
 
-      <div className="hidden lg:grid grid-cols-[200px,1fr]">
+      <div className="grid grid-cols-[200px,1fr]">
         {/*left view */}
         <div className="p-2 bg-white min-h-[calc(100vh-120px)] overflow-y-scroll">
           {/*Sort by */}

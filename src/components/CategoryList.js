@@ -26,7 +26,7 @@ const CategoryList = () => {
   }, []);
 
   return (
-    <div className="container mx-auto p-4 font-serif">
+    <div className="container mx-auto p-4 font-serif"> 
       <div className="flex items-center gap-4 justify-between overflow-scroll scrollbar-none">
         {
             loading ? (
@@ -48,7 +48,7 @@ const CategoryList = () => {
                              className="h-full w-full object-cover rounded-full transition-transform hover:scale-110"
                           />
                         </div>
-                        <p className="text-center text-sm md:text-base capitalize">{product?.category}</p>
+                        <p className="text-center text-sm capitalize">{product?.category}</p>
                       </Link>
                     );
                   })

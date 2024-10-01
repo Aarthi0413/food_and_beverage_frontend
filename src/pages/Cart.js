@@ -190,10 +190,10 @@ const Cart = () => {
               ))
             : data.map((product, index) => (
                 <div
-                  className="w-full bg-white h-32 my-2 border rounded grid grid-cols-[128px,1fr]"
+                  className="w-full bg-white h-32 my-2 border rounded grid grid-cols-[128px,1fr] shadow-lg"
                   key={product?._id + "Add to cart loading"}
                 >
-                  <div className="w-32 h-32">
+                  <div className="w-32 h-32 ">
                     <img
                       src={product?.productId?.productImage[0]}
                       className="w-full h-full object-scale-down mix-blend-multiply"
@@ -255,7 +255,7 @@ const Cart = () => {
 
         {/* Total cart product */}
         {data[0] && (
-          <div className="mt-5 lg:mt-0 w-full max-w-sm">
+          <div className="mt-5 lg:mt-0 w-full max-w-sm shadow-lg rounded-lg">
             {loading ? (
               <div className="h-36 bg-purple-100 border border-purple-300 animate-pulse"></div>
             ) : (
@@ -295,7 +295,7 @@ const Cart = () => {
 
                 <div className="time-slot-container flex flex-col p-2">
                   <label className="font-semibold mb-2">
-                    Number of Tables:
+                    Number of Tables
                   </label>
                   <input
                     type="number"
@@ -305,7 +305,7 @@ const Cart = () => {
                       const value =
                         e.target.value === ""
                           ? ""
-                          : Math.max(1, parseInt(e.target.value, 10)); // Handle empty input
+                          : Math.max(1, parseInt(e.target.value, 10));
                       setNumberOfTables(value);
                     }}
                     className="border border-gray-300 rounded-md p-2 mb-4 w-full max-w-xs"

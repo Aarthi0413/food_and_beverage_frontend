@@ -44,13 +44,13 @@ const VerticalCartProduct = ({category, heading}) => {
       <h1 className='text-xl font-bold py-4'>{heading}</h1>
 
       <div className='flex items-center gap-4 md:gap-6 overflow-scroll scrollbar-none transition-all' ref={scrollElement}>
-      <button className="bg-purple-100 rounded-full p-4 shadow-md absolute left-0 hidden md:block" onClick={scrollLeft}><FaAngleLeft /></button>
-      <button className="bg-purple-100 rounded-full p-4 shadow-md absolute right-0 hidden md:block" onClick={scrollRight}><FaAngleRight /></button> 
+      <button className="bg-purple-100 rounded-full p-4 shadow-md absolute left-0 hidden md:block z-20" onClick={scrollLeft}><FaAngleLeft /></button>
+      <button className="bg-purple-100 rounded-full p-4 shadow-md absolute right-0 hidden md:block z-20" onClick={scrollRight}><FaAngleRight /></button> 
         {
           loading ? (
             loadingList.map((product,index)=>{
               return(
-                  <div className='w-full min-w-[280px] md:min-w-[320px] max-w-[280px] md:max-w-[320px] h-36 bg-white rounded-sm shadow flex'>
+                  <div className='w-full min-w-[280px] md:min-w-[320px] max-w-[280px] md:max-w-[320px] h-36 bg-white rounded-sm flex shadow-lg'>
                       <div className='bg-purple-100 h-full p-4 min-w-[120px] md:min-w-[145px] animate-pulse'>
 
                       </div>
@@ -69,13 +69,13 @@ const VerticalCartProduct = ({category, heading}) => {
           ):(
             data.map((product, index)=>{
               return(
-                <Link to={"product/"+product?._id} className='w-full min-w-[280px] md:min-w-[320px] max-w-[280px] md:max-w-[320px]  bg-white rounded-sm shadow-md'>
+                <Link to={"product/"+product?._id} className='w-full min-w-[280px] md:min-w-[320px] max-w-[280px] md:max-w-[320px]  bg-white rounded-sm shadow-custom-gray z-10 m-2'>
                 <div className='h-44 p-4 min-w-[120px] md:min-w-[145px] flex justify-center items-center'>
                   <img src={product.productImage[0]} alt='products' className='object-scale-down h-full hover:scale-125 transition-all mix-blend-multiply'/>
                 </div>
                 <div className='p-4 grid gap-1'>
-                  <h1 className='font-medium text-base md:text-lg text-ellipsis line-clamp-1'>{product?.productName}</h1>
-                  <p className='capitalize text-green-600'>{product?.category}</p>
+                  <h1 className='font-medium text-base md:text-md text-ellipsis line-clamp-1'>{product?.productName}</h1>
+                  <p className='capitalize text-green-600 text-sm'>{product?.category}</p>
                   <div className='flex gap-3 text-sm'>
                     <p className='text-style '>{displayCurrency(product?.price)}</p>
                   </div>

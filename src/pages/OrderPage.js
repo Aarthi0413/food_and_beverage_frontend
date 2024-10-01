@@ -110,6 +110,12 @@ const OrderPage = () => {
                         {item.paymentDetails.payment_method_types.join(", ")}
                       </p>
                       <p className=" ml-1">
+                        Payment Option: {item.paymentOption}
+                      </p>
+                      <p className=" ml-1">
+                        Remaining Amount: <span className="text-style">{item.remainingAmount}</span>
+                      </p>
+                      <p className=" ml-1">
                         Payment Status: {item.paymentDetails.payment_status}
                       </p>
                     </div>

@@ -97,7 +97,7 @@ const ProductDetails = () => {
     <div className="container mx-auto p-4 font-serif">
       <div className=" min-h[200px] flex flex-col lg:flex-row gap-2">
         <div className="h-96 flex flex-col lg:flex-row-reverse gap-4">
-          <div className="h-[300px] w-[300px] lg:h-96 lg:w-96 relative p-2">
+          <div className="h-[300px] w-[300px] lg:h-96 lg:w-96 relative p-2 shadow-custom-gray">
             <img
               src={activeImage}
               alt="product"
@@ -123,7 +123,7 @@ const ProductDetails = () => {
           </div>
           <div className="h-full">
             {loading ? (
-              <div className="flex gap-2 lg:flex-col overflow-scroll scrollbar-none h-full ">
+              <div className="flex gap-2 lg:flex-col overflow-scroll scrollbar-none h-full">
                 {productImageListLoading.map((el, index) => {
                   return (
                     <div
@@ -144,7 +144,7 @@ const ProductDetails = () => {
                       <img
                         src={imgURL}
                         alt="Product"
-                        className="object-scale-down w-full h-full mix-blend-multiply p-1 cursor-pointer"
+                        className="object-scale-down w-full h-full mix-blend-multiply p-1 cursor-pointer shadow-custom-gray"
                         onMouseEnter={() => handleMouseEnterProduct(imgURL)}
                         onClick={() => handleMouseEnterProduct(imgURL)}
                       />
