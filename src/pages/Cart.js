@@ -171,7 +171,7 @@ const Cart = () => {
   };
 
   return (
-    <div className="container mx-auto font-serif px-5">
+    <div className="container mx-auto  px-5">
       <div className="text-center text-lg my-3 font-bold">
         {data.length === 0 && !loading && (
           <p className="py-5">No product in the cart</p>
@@ -219,10 +219,10 @@ const Cart = () => {
                       {product?.productId?.category}
                     </p>
                     <div className="flex items-center justify-between">
-                      <p className="text-style text-sm">
+                      <p className=" text-sm">
                         {displayCurrency(product?.productId?.price)}
                       </p>
-                      <p className="text-style text-sm text-green-600 font-semibold">
+                      <p className=" text-sm text-green-600 font-semibold">
                         {displayCurrency(
                           product?.productId?.price * product?.quantity
                         )}
@@ -267,7 +267,7 @@ const Cart = () => {
                 </div>
                 <div className="flex items-center justify-between px-4 py-1 gap-2 ">
                   <p>Total Price</p>
-                  <p className="text-style">{displayCurrency(totalPrice)}</p>
+                  <p className="">{displayCurrency(totalPrice)}</p>
                 </div>
 
                 {/* Payment option selection */}
@@ -332,7 +332,7 @@ const Cart = () => {
                   </div>
                 </div>
 
-                <div className="flex justify-end items-end p-2 text-style">
+                <div className="flex justify-end items-end p-2 ">
                   <button
                     className="bg-green-600 text-white px-4 py-1 w-fit rounded"
                     onClick={handlePayment}

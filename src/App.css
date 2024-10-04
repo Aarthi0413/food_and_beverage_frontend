@@ -18,15 +18,6 @@
   display: none;
 }
 
-.text-style{
-  font-family: 'Poppins', sans-serif;
-}
-
-.shop-name{
-  font-style: italic;
-  font-family: Lucida;
-}
-
 .login-background{
   background-image: url("https://d1tgh8fmlzexmh.cloudfront.net/ccbp-responsive-website/foodmunch-banner-bg.png");
   height: 91vh;

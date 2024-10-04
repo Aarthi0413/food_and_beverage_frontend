@@ -50,7 +50,7 @@ const VerticalCart = ({loading, data = []}) => {
                   <h1 className='font-medium text-base md:text-lg text-ellipsis line-clamp-1'>{product?.productName}</h1>
                   <p className='capitalize text-green-600'>{product?.category}</p>
                   <div className='flex gap-3 text-sm'>
-                    <p className='text-style '>{displayCurrency(product?.price)}</p>
+                    <p className=' '>{displayCurrency(product?.price)}</p>
                   </div>
                   <button className='px-3 py-1 bg-orange-400 rounded-full text-white text-sm hover:bg-orange-500' onClick={(e)=>handleAddToCart(e,product?._id)}>Add to cart</button>
                 </div>

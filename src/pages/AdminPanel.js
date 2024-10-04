@@ -25,7 +25,7 @@ const AdminPanel = () => {
     if (isAuthorized === false) return null;
 
     return (
-        <div className='md:flex min-h-[calc(100vh-120px)] font-serif hidden'>
+        <div className='md:flex min-h-[calc(100vh-120px)]  hidden'>
             <aside className='bg-white min-h-full w-full max-w-60 customShadow'>
                 <div className='h-32 flex justify-center items-center flex-col'>
                     <div className='text-5xl cursor-pointer relative flex justify-center'>

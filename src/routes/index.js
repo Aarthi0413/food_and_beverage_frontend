@@ -31,10 +31,6 @@ const router = createBrowserRouter([
                 element:<Login/>
             },
             {
-                path:"forgot-password",
-                element:<ForgotPassword/>
-            },
-            {
                 path:"signup",
                 element:<Signup/>
             },

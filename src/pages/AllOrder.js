@@ -30,14 +30,14 @@ const AllOrder = () => {
     }, []);
   
     return (
-      <div className="font-serif h-[calc(100vh-190px)] overflow-y-scroll scrollbar-none">
+      <div className=" h-[calc(100vh-190px)] overflow-y-scroll scrollbar-none">
         {!data[0] && <p>No Orders Available</p>}
         <div className="p-4 w-full ">
           {data.map((item, index) => {
             const formattedDate = formatDate(new Date(item.createdAt));
             return (
               <div key={item.userId + index}>
-                <p className="text-style first-line:font-bold text-md">
+                <p className=" first-line:font-bold text-md">
                   {formattedDate}
                 </p>
 
@@ -75,7 +75,7 @@ const AllOrder = () => {
                       <div>
                         <div className="text-lg font-bold text-green-600">Payment Details</div>
                         <p className=" ml-1">User ID: {item.email}</p>
-                        <p className=" ml-1">Time: <span className="text-style">{item.timeSlot}</span></p>
+                        <p className=" ml-1">Time: <span className="">{item.timeSlot}</span></p>
                         <p className=" ml-1">Total Guests: {item.guestCount}</p>
                         <p className=" ml-1">
                           Payment Method:{" "}
@@ -85,7 +85,7 @@ const AllOrder = () => {
                         Payment Option: {item.paymentOption}
                       </p>
                       <p className=" ml-1">
-                        Remaining Amount: <span className="text-style">{item.remainingAmount}</span>
+                        Remaining Amount: <span className="">{item.remainingAmount}</span>
                       </p>
                         <p className=" ml-1">
                           Payment Status: {item.paymentDetails.payment_status}

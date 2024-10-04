@@ -30,12 +30,12 @@ const SearchProduct = () => {
   }, [query]);
 
   return (
-    <div className="container mx-auto p-4 font-serif">
-      {loading && <p className="text-center text-lg font-serif">Loading...</p>}
+    <div className="container mx-auto p-4 ">
+      {loading && <p className="text-center text-lg ">Loading...</p>}
 
       <p className="text-lg font-bold my-3">Search Results: {data.length}</p>
       {data.length === 0 && !loading && (
-        <p className="text-center text-lg font-serif">No products found.</p>
+        <p className="text-center text-lg ">No products found.</p>
       )}
 
       {data.length !== 0 && !loading && (

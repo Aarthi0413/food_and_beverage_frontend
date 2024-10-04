@@ -94,7 +94,7 @@ const ProductDetails = () => {
   }
 
   return (
-    <div className="container mx-auto p-4 font-serif">
+    <div className="container mx-auto p-4 ">
       <div className=" min-h[200px] flex flex-col lg:flex-row gap-2">
         <div className="h-96 flex flex-col lg:flex-row-reverse gap-4">
           <div className="h-[300px] w-[300px] lg:h-96 lg:w-96 relative p-2 shadow-custom-gray">
@@ -193,7 +193,7 @@ const ProductDetails = () => {
               <FaStar />
               <FaStarHalfAlt />
             </div>
-            <div className="flex items-center gap-2 font-medium text-style my-1 lg:text-xl">
+            <div className="flex items-center gap-2 font-medium  my-1 lg:text-xl">
               <p>{displayCurrency(data?.price)}</p>
             </div>
             <div className="flex items-center gap-3 my-2">

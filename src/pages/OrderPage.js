@@ -45,7 +45,7 @@ const OrderPage = () => {
   });
 
   return (
-    <div className="font-serif">
+    <div className="">
       <div className="p-4 w-full">
         {data.length > 0 && (
           <div className="lg:flex items-center w-full justify-between max-w-sm border border-orange-200 rounded-full focus-within:shadow pl-2 mb-4">
@@ -66,7 +66,7 @@ const OrderPage = () => {
           const formattedDate = formatDate(new Date(item.createdAt));
           return (
             <div key={item.userId + index}>
-              <p className="text-style first-line:font-bold text-md">
+              <p className=" first-line:font-bold text-md">
                 {formattedDate}
               </p>
               <div className="border rounded">
@@ -89,7 +89,7 @@ const OrderPage = () => {
                             </p>
                             <div className="flex items-center gap-5 mt-1">
                               <p className="text-green-600">
-                                Price: <span className="text-style">{displayCurrency(product.price)}</span>
+                                Price: <span className="">{displayCurrency(product.price)}</span>
                               </p>
                               <p>Quantity: {product.quantity}</p>
                             </div>
@@ -103,7 +103,7 @@ const OrderPage = () => {
                     <div>
                       <div className="text-lg font-bold text-green-600">Payment Details</div>
                       <p className=" ml-1">User ID: {item.email}</p>
-                      <p className=" ml-1">Time: <span className="text-style">{item.timeSlot}</span></p>
+                      <p className=" ml-1">Time: <span className="">{item.timeSlot}</span></p>
                       <p className=" ml-1">Total Guests: {item.guestCount}</p>
                       <p className=" ml-1">
                         Payment Method:{" "}
@@ -113,7 +113,7 @@ const OrderPage = () => {
                         Payment Option: {item.paymentOption}
                       </p>
                       <p className=" ml-1">
-                        Remaining Amount: <span className="text-style">{item.remainingAmount}</span>
+                        Remaining Amount: <span className="">{item.remainingAmount}</span>
                       </p>
                       <p className=" ml-1">
                         Payment Status: {item.paymentDetails.payment_status}
@@ -122,7 +122,7 @@ const OrderPage = () => {
                   </div>
                 </div>
                 <div className="font-semibold ml-auto w-fit lg:text-md min-w-[300px] text-green-600">
-                  Total Amount: <span className="text-style">{displayCurrency(item.totalAmount)}</span>
+                  Total Amount: <span className="">{displayCurrency(item.totalAmount)}</span>
                 </div>
               </div>
             </div>

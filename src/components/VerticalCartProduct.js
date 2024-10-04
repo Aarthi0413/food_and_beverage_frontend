@@ -40,7 +40,7 @@ const VerticalCartProduct = ({category, heading}) => {
     }
 
   return (
-    <div className='container mx-auto px-4 my-6 font-serif relative'>
+    <div className='container mx-auto px-4 my-6  relative'>
       <h1 className='text-xl font-bold py-4'>{heading}</h1>
 
       <div className='flex items-center gap-4 md:gap-6 overflow-scroll scrollbar-none transition-all' ref={scrollElement}>
@@ -77,9 +77,9 @@ const VerticalCartProduct = ({category, heading}) => {
                   <h1 className='font-medium text-base md:text-md text-ellipsis line-clamp-1'>{product?.productName}</h1>
                   <p className='capitalize text-green-600 text-sm'>{product?.category}</p>
                   <div className='flex gap-3 text-sm'>
-                    <p className='text-style '>{displayCurrency(product?.price)}</p>
+                    <p className=' '>{displayCurrency(product?.price)}</p>
                   </div>
-                  <button className='px-3 py-2 bg-orange-400 rounded-full text-white text-sm max-w-[100px] right-0' onClick={(e)=>handleAddToCart(e,product?._id)}>Add to cart</button>
+                  <button className='px-3 py-2 bg-orange-400 rounded-full text-white text-sm w-fit right-0' onClick={(e)=>handleAddToCart(e,product?._id)}>Add to cart</button>
                 </div>
                 </Link>
               )

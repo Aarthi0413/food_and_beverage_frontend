@@ -63,7 +63,7 @@ const Signup = () => {
   };
 
   return (
-    <div id="signup" className="font-serif signup-background">
+    <div id="signup" className=" signup-background">
       <div className="mx-auto container p-4">
         <div className="bg-transparent p-5 w-full max-w-sm ml-auto">
           <form className="pt-6 pb-5 flex flex-col gap-2" onSubmit={handleSubmit}>
@@ -132,11 +132,11 @@ const Signup = () => {
                 />
 
                 <div
-                  className="cursor-pointer text-xl bg-transparent"
+                  className="cursor-pointer text-xl bg-transparent text-white"
                   onClick={() => setShowConfirmPassword((preve) => !preve)}
                 >
                   <span>
-                    {showConfirmPassword ? <FaEyeSlash /> : <FaEye />}
+                    {showConfirmPassword ? <FaEyeSlash/> : <FaEye />}
                   </span>
                 </div>
               </div>

@@ -59,7 +59,7 @@ const {fetchUserDetails, fetchUserAddToCart} = useContext(Context);
   };
 
   return (
-    <div id="login" className="font-serif login-background">
+    <div id="login" className=" login-background">
       <div className="mx-auto container px-4 py-4">
         <div className="bg-transparent p-4 w-full max-w-sm rounded ml-auto mt-20 ">
           <form
@@ -103,12 +103,6 @@ const {fetchUserDetails, fetchUserAddToCart} = useContext(Context);
                   <span>{showPassword ? <FaEyeSlash /> : <FaEye />}</span>
                 </div>
               </div>
-              <Link
-                to={"/forgot-password"}
-                className="block w-fit ml-auto hover:underline text-white hover:text-orange-500"
-              >
-                Forgot password ?
-              </Link>
             </div>
 
             <button className="bg-orange-500 hover:bg-orange-500 text-white px-6 py-2 w-full max-w-[150px] rounded-full mx-auto block mt-6">

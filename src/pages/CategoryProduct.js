@@ -93,7 +93,7 @@ const CategoryProduct = () => {
   },[sortBy])
 
   return (
-    <div className="container mx-auto p-4 font-serif">
+    <div className="container mx-auto p-4 ">
       {/*desktop view */}
 
       <div className="grid grid-cols-[200px,1fr]">
