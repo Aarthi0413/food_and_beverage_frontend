@@ -53,7 +53,7 @@ const AllOrder = () => {
                             <img
                               src={product.image[0]}
                               alt="product"
-                              className="w-28 h-28 object-scale-down p-2 bg-purple-300"
+                              className="w-28 h-28 object-scale-down p-2"
                             />
                             <div>
                               <p className="font-medium text-md text-ellipsis line-climp-1">
@@ -74,10 +74,19 @@ const AllOrder = () => {
                     <div className="flex flex-col gap-4 p-2 min-w-[300px]">
                       <div>
                         <div className="text-lg font-bold text-green-600">Payment Details</div>
+                        <p className=" ml-1">User ID: {item.email}</p>
+                        <p className=" ml-1">Time: <span className="text-style">{item.timeSlot}</span></p>
+                        <p className=" ml-1">Total Guests: {item.guestCount}</p>
                         <p className=" ml-1">
                           Payment Method:{" "}
                           {item.paymentDetails.payment_method_types}
                         </p>
+                        <p className=" ml-1">
+                        Payment Option: {item.paymentOption}
+                      </p>
+                      <p className=" ml-1">
+                        Remaining Amount: <span className="text-style">{item.remainingAmount}</span>
+                      </p>
                         <p className=" ml-1">
                           Payment Status: {item.paymentDetails.payment_status}
                         </p>
