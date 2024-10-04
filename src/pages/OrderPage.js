@@ -104,7 +104,7 @@ const OrderPage = () => {
                       <div className="text-lg font-bold text-green-600">Payment Details</div>
                       <p className=" ml-1">User ID: {item.email}</p>
                       <p className=" ml-1">Time: <span className="text-style">{item.timeSlot}</span></p>
-                      <p className=" ml-1">Booked Tables: {item.tableNumbers}</p>
+                      <p className=" ml-1">Total Guests: {item.guestCount}</p>
                       <p className=" ml-1">
                         Payment Method:{" "}
                         {item.paymentDetails.payment_method_types.join(", ")}

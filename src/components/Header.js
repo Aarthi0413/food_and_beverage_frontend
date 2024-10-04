@@ -10,6 +10,7 @@ import { setUserDetails } from "../store/userSlice";
 import ROLE from "../common/role";
 import Context from "../context";
 import logo from '../assest/logo.png'
+import { FaSignOutAlt } from 'react-icons/fa';
 
 const Header = () => {
   const user = useSelector((state) => state?.user?.user);
@@ -55,7 +56,6 @@ const Header = () => {
       <div className="h-full container mx-auto flex items-center justify-between px-5">
         <div className="">
           <Link to={"/"}>
-            {/* <h1 className="text-orange-400 font-serif font-bold shop-name text-2xl">F&B</h1> */}
             <img src={logo} alt='success' width={50} height={50} className='mix-blend-multiply object-scale-down bg-white'/>
           </Link>
         </div>
@@ -128,7 +128,23 @@ const Header = () => {
             </Link>
           )}
 
-          <div>
+          {/* Logout icon for mobile */}
+          <div className="block md:hidden">
+            {userId ? (
+              <div onClick={handleLogout} className="text-3xl text-orange-400 cursor-pointer">
+                <FaSignOutAlt />
+              </div>
+            ) : (
+              <Link
+                to={"/login"}
+                className="px-4 py-2 bg-orange-400 rounded-full text-white"
+              >
+                Login
+              </Link>
+            )}
+          </div>
+
+          <div className="hidden md:block">
             {userId ? (
               <button
                 onClick={handleLogout}

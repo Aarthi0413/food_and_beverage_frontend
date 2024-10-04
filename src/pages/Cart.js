@@ -13,7 +13,7 @@ const Cart = () => {
   const [productToDelete, setProductToDelete] = useState(null);
   const [paymentOption, setPaymentOption] = useState("full");
   const [selectedTime, setSelectedTime] = useState("");
-  const [numberOfTables, setNumberOfTables] = useState(1);
+  const [numberOfGuests, setNumberOfGuests] = useState(1);
 
   const context = useContext(Context);
   const loadingCart = new Array(context.cartProductCount).fill(null);
@@ -138,7 +138,7 @@ const Cart = () => {
           cartItems: data,
           amount: amountToPay,
           timeSlot: selectedTime,
-          tableNumbers: numberOfTables,
+          guestCount: numberOfGuests,
           paymentOption: paymentOption,
         },
         {
@@ -295,18 +295,18 @@ const Cart = () => {
 
                 <div className="time-slot-container flex flex-col p-2">
                   <label className="font-semibold mb-2">
-                    Number of Tables
+                    Number of Guests
                   </label>
                   <input
                     type="number"
                     min="1"
-                    value={numberOfTables}
+                    value={numberOfGuests}
                     onChange={(e) => {
                       const value =
                         e.target.value === ""
                           ? ""
                           : Math.max(1, parseInt(e.target.value, 10));
-                      setNumberOfTables(value);
+                          setNumberOfGuests(value);
                     }}
                     className="border border-gray-300 rounded-md p-2 mb-4 w-full max-w-xs"
                     placeholder="Enter number of tables"

@@ -180,7 +180,7 @@ const ProductDetails = () => {
             </div>
           </div>
         ) : (
-          <div className="flex flex-col gap-1">
+          <div className="flex flex-col gap-1 ml-3">
             <p className="text-green-600 bg-green-200 font-medium rounded-full w-fit px-2">
               {data?.brandName}
             </p>
