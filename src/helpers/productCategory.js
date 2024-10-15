@@ -5,7 +5,7 @@ const productCategory = [
     value: "pongal",
   },
   {
-    id:2,
+    id: 2,
     lable: "Mini Tiffin",
     value: "mini-tiffin",
   },
@@ -25,7 +25,7 @@ const productCategory = [
     value: "rava-kesari",
   },
   {
-    id:6,
+    id: 6,
     lable: "Onion Uttapam",
     value: "onion-uttapam",
   },
@@ -36,44 +36,34 @@ const productCategory = [
   },
   {
     id: 8,
-    lable:"Juices",
-    value:"juices",
-  },
-  {
-    id:9,
     lable: "Filter Coffee",
     value: "filter-coffee",
   },
   {
-    id:10,
+    id: 9,
     lable: "Idli",
     value: "idli",
   },
   {
-    id:11,
+    id: 10,
     lable: "Chaat",
     value: "chaat",
   },
   {
-    id:12,
+    id: 11,
     lable: "Dosa",
     value: "dosa",
   },
   {
-    id:13,
+    id: 12,
     lable: "Variety Rice",
     value: "variety-rice",
   },
   {
-    id:14,
-    lable: "Juice",
-    value: "juice",
-  },
-  {
-    id:15,
+    id: 13,
     lable: "Continental",
     value: "continental",
-  }
+  },
 ];
 
 export default productCategory;

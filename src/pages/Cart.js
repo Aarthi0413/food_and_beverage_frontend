@@ -3,8 +3,8 @@ import React, { useContext, useEffect, useState } from "react";
 import Context from "../context";
 import displayCurrency from "../helpers/displayCurrency";
 import { MdDelete } from "react-icons/md";
-import { loadStripe } from "@stripe/stripe-js";
 import ConfirmationDialog from "../components/ConfirmationDialog";
+import { useNavigate } from "react-router-dom";
 
 const Cart = () => {
   const [data, setData] = useState([]);
@@ -14,10 +14,11 @@ const Cart = () => {
   const [paymentOption, setPaymentOption] = useState("full");
   const [selectedTime, setSelectedTime] = useState("");
   const [numberOfGuests, setNumberOfGuests] = useState(1);
+  const [paymentMessage, setPaymentMessage] = useState("");
 
   const context = useContext(Context);
   const loadingCart = new Array(context.cartProductCount).fill(null);
-
+  const navigate = useNavigate();
   const fetchData = async () => {
     try {
       const response = await axios.get(
@@ -128,9 +129,6 @@ const Cart = () => {
   const remainingAmount = totalPrice - amountToPay;
 
   const handlePayment = async () => {
-    const stripePromise = await loadStripe(
-      process.env.REACT_APP_STRIPE_PUBLIC_KEY
-    );
     try {
       const response = await axios.post(
         `${process.env.REACT_APP_BACKEND_URL}/api/checkout`,
@@ -145,15 +143,20 @@ const Cart = () => {
           withCredentials: true,
         }
       );
-      //console.log("payment response:", response.data);
 
-      if (response?.data?.data?.id) {
-        stripePromise.redirectToCheckout({
-          sessionId: response?.data?.data?.id,
-        });
+      if (response?.data?.success) {
+        setPaymentMessage("Paid Successfully");
+        setData([]);
+        context.cartProductCount = 0;
+
+        setTimeout(() => {
+          navigate("/success");
+        }, 2000);
       }
     } catch (error) {
-      console.error(error);
+      console.error("Payment failed", error);
+      setPaymentMessage("Payment failed");
+      navigate("/cancel");
     }
   };
 
@@ -171,7 +174,7 @@ const Cart = () => {
   };
 
   return (
-    <div className="container mx-auto  px-5">
+    <div className="container mx-auto px-5">
       <div className="text-center text-lg my-3 font-bold">
         {data.length === 0 && !loading && (
           <p className="py-5">No product in the cart</p>
@@ -193,7 +196,7 @@ const Cart = () => {
                   className="w-full bg-white h-32 my-2 border rounded grid grid-cols-[128px,1fr] shadow-lg"
                   key={product?._id + "Add to cart loading"}
                 >
-                  <div className="w-32 h-32 ">
+                  <div className="w-32 h-32">
                     <img
                       src={product?.productId?.productImage[0]}
                       className="w-full h-full object-scale-down mix-blend-multiply"
@@ -219,10 +222,10 @@ const Cart = () => {
                       {product?.productId?.category}
                     </p>
                     <div className="flex items-center justify-between">
-                      <p className=" text-sm">
+                      <p className="text-sm">
                         {displayCurrency(product?.productId?.price)}
                       </p>
-                      <p className=" text-sm text-green-600 font-semibold">
+                      <p className="text-sm text-green-600 font-semibold">
                         {displayCurrency(
                           product?.productId?.price * product?.quantity
                         )}
@@ -231,7 +234,7 @@ const Cart = () => {
 
                     <div className="flex items-center gap-3 mt-2">
                       <button
-                        className="border  w-6 h-6 flex justify-center items-center rounded-full hover:bg-orange-400 hover:text-white"
+                        className="border w-6 h-6 flex justify-center items-center rounded-full hover:bg-orange-400 hover:text-white"
                         onClick={() =>
                           decreaseQuantity(product?._id, product?.quantity)
                         }
@@ -261,103 +264,103 @@ const Cart = () => {
             ) : (
               <div className="h-50">
                 <h2 className="text-white bg-orange-400 px-4 py-1">Summary</h2>
-                <div className="flex items-center justify-between px-4 py-1 gap-2 ">
+                <div className="flex items-center justify-between px-4 py-1 gap-2">
                   <p>Quantity</p>
                   <p>{totalQuantity}</p>
                 </div>
-                <div className="flex items-center justify-between px-4 py-1 gap-2 ">
+                <div className="flex items-center justify-between px-4 py-1 gap-2">
                   <p>Total Price</p>
-                  <p className="">{displayCurrency(totalPrice)}</p>
+                  <p>{displayCurrency(totalPrice)}</p>
                 </div>
-
-                {/* Payment option selection */}
-                <div className="flex flex-col p-2">
-                  <label className="font-semibold mb-1">Payment Option</label>
-                  <div className="flex items-center">
-                    <input
-                      type="radio"
-                      value="full"
-                      checked={paymentOption === "full"}
-                      onChange={() => setPaymentOption("full")}
-                    />
-                    <span className="ml-2">Full Amount</span>
-                  </div>
-                  <div className="flex items-center">
-                    <input
-                      type="radio"
-                      value="half"
-                      checked={paymentOption === "half"}
-                      onChange={() => setPaymentOption("half")}
-                    />
-                    <span className="ml-2">Half Amount</span>
-                  </div>
+                <div className="flex items-center justify-between px-4 py-1 gap-2">
+                  <p>Pay Now</p>
+                  <p>{displayCurrency(amountToPay)}</p>
                 </div>
-
-                <div className="time-slot-container flex flex-col p-2">
-                  <label className="font-semibold mb-2">
-                    Number of Guests
-                  </label>
-                  <input
-                    type="number"
-                    min="1"
-                    value={numberOfGuests}
-                    onChange={(e) => {
-                      const value =
-                        e.target.value === ""
-                          ? ""
-                          : Math.max(1, parseInt(e.target.value, 10));
-                          setNumberOfGuests(value);
-                    }}
-                    className="border border-gray-300 rounded-md p-2 mb-4 w-full max-w-xs"
-                    placeholder="Enter number of tables"
-                  />
-                  <label className="time-slot-label font-semibold">
-                    Select Time Slot
-                  </label>
-                  <div className="time-slot-relative relative">
-                    <select
-                      value={selectedTime}
-                      onChange={(e) => setSelectedTime(e.target.value)}
-                      className="time-slot-dropdown"
-                    >
-                      <option value="" disabled>
-                        Select a time
-                      </option>
-                      {generateTimeSlots().map((slot, index) => (
-                        <option key={index} value={slot}>
-                          {slot}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
+                <div className="flex items-center justify-between px-4 py-1 gap-2">
+                  <p>Pay Later</p>
+                  <p>{displayCurrency(remainingAmount)}</p>
                 </div>
-
-                <div className="flex justify-end items-end p-2 ">
-                  <button
-                    className="bg-green-600 text-white px-4 py-1 w-fit rounded"
-                    onClick={handlePayment}
-                  >
-                    Pay {displayCurrency(amountToPay)}
-                    {paymentOption === "half" && ` (Remaining: ${displayCurrency(remainingAmount)})`}
-                  </button>
-                </div>
-                {paymentOption === "half" && (
-                  <div className="mt-2 text-red-600">
-                    <p>
-                      You have paid {displayCurrency(amountToPay)}. Remaining amount:{" "}
-                      {displayCurrency(remainingAmount)}.
-                    </p>
-                  </div>
-                )}
               </div>
+            )}
+
+            {/* Select payment option */}
+            <div className="flex items-center justify-between px-4 my-3 gap-2">
+              <div className="flex items-center gap-2">
+                <input
+                  id="fullPayment"
+                  type="radio"
+                  name="paymentOption"
+                  checked={paymentOption === "full"}
+                  onChange={() => setPaymentOption("full")}
+                />
+                <label htmlFor="fullPayment">Full Payment</label>
+              </div>
+              <div className="flex items-center gap-2">
+                <input
+                  id="halfPayment"
+                  type="radio"
+                  name="paymentOption"
+                  checked={paymentOption === "half"}
+                  onChange={() => setPaymentOption("half")}
+                />
+                <label htmlFor="halfPayment">Half Payment</label>
+              </div>
+            </div>
+
+            {/* Select guest count */}
+            <div className="flex flex-row justify-between gap-2 px-4 py-3">
+              <label htmlFor="guestCount">Number of Guests</label>
+              <input
+                id="guestCount"
+                type="number"
+                value={numberOfGuests}
+                onChange={(e) => setNumberOfGuests(e.target.value)}
+                min={1}
+                className="w-24 border rounded-md text-center"
+              />
+            </div>
+
+            {/* Select time slot */}
+            <div className="flex flex-row justify-between gap-2 px-4 py-3">
+              <label htmlFor="timeSlot">Select Time Slot</label>
+              <select
+                id="timeSlot"
+                value={selectedTime}
+                onChange={(e) => setSelectedTime(e.target.value)}
+                className="border px-2 py-1 rounded-md"
+              >
+                <option value="">Select Time</option>
+                {generateTimeSlots().map((slot) => (
+                  <option key={slot} value={slot}>
+                    {slot}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            {/* Payment Button */}
+            <div className="flex items-center justify-center">
+              <button
+                className="bg-orange-400 text-white px-4 py-2 my-3 rounded-full"
+                onClick={handlePayment}
+              >
+                Confirm Payment
+              </button>
+            </div>
+
+            {/* Display payment success message */}
+            {paymentMessage && (
+              <p className="text-green-600 text-center">{paymentMessage}</p>
             )}
           </div>
         )}
       </div>
 
+      {/* Delete Confirmation */}
       {showConfirm && (
         <ConfirmationDialog
-          message="Are you sure you want to delete this product from your cart?"
+          title="Delete product"
+          message="Are you sure you want to remove this product from the cart?"
           onConfirm={handleConfirmDelete}
           onCancel={handleCancelDeleteProduct}
         />
