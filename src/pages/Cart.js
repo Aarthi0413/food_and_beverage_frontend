@@ -146,12 +146,18 @@ const Cart = () => {
 
       if (response?.data?.success) {
         setPaymentMessage("Paid Successfully");
-        setData([]);
-        context.cartProductCount = 0;
 
         setTimeout(() => {
+          setData([]);
+          context.cartProductCount = 0;
           navigate("/success");
-        }, 2000);
+        }, 1000);
+        // setData([]);
+        // context.cartProductCount = 0;
+
+        // setTimeout(() => {
+        //   navigate("/success");
+        // }, 2000);
       }
     } catch (error) {
       console.error("Payment failed", error);
