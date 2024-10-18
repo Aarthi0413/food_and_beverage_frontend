@@ -152,12 +152,6 @@ const Cart = () => {
           context.cartProductCount = 0;
           navigate("/success");
         }, 1000);
-        // setData([]);
-        // context.cartProductCount = 0;
-
-        // setTimeout(() => {
-        //   navigate("/success");
-        // }, 2000);
       }
     } catch (error) {
       console.error("Payment failed", error);
